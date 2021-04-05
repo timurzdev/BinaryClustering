@@ -16,7 +16,7 @@ BATCH_SIZE = 1
 IMAGE_SIZE = 64
 CHANNELS_IMG = 1
 Z_DIM = 100
-NUM_EPOCHS = 10
+NUM_EPOCHS = 200
 FEATURES_DISC = 64
 FEATURES_GEN = 64
 
@@ -24,6 +24,7 @@ transforms = transforms.Compose(
     [
         transforms.Grayscale(num_output_channels=1),
         transforms.ToTensor(),
+        transforms.Resize(IMAGE_SIZE),
     ]
 )
 
@@ -68,11 +69,11 @@ for epoch in range(NUM_EPOCHS):
     for batch_idx, (real, _) in enumerate(loader):
         real = real.to(device)
         noise = torch.randn((BATCH_SIZE, Z_DIM, 1, 1)).to(device)
-
+        fake = gen(noise)
         # TRAIN DISC max log(D(X)) + log(1-D(G(Z)))
         disc_real = disc(real).reshape(-1)
         loss_disc_real = criterion(disc_real, torch.ones_like(disc_real))
-        disc_fake = disc(noise).reshape(-1)
+        disc_fake = disc(fake.detach()).reshape(-1)
         loss_disc_fake = criterion(disc_fake, torch.zeros_like(disc_fake))
         loss_disc = (loss_disc_fake + loss_disc_real) /2
         disc.zero_grad()
@@ -80,26 +81,22 @@ for epoch in range(NUM_EPOCHS):
         opt_disc.step()
 
         # TRAIN GENERATOR min log(1-D(G(Z))) or max log(D(G(Z))
-        output = disc(noise).reshape(-1)
+        output = disc(fake).reshape(-1)
         loss_gen = criterion(output, torch.ones_like(output))
         gen.zero_grad()
         loss_gen.backward()
         opt_gen.step()
 
         if batch_idx % 10 == 0:
-            print(
-                f"Epoch [{epoch}/{NUM_EPOCHS}] Batch {batch_idx}/{len(dataloader)} \
-                         Loss D: {loss_disc:.4f}, loss G: {loss_gen:.4f}"
-            )
 
             with torch.no_grad():
                 fake = gen(fixed_noise)
                 # take out (up to) 32 examples
                 img_grid_real = torchvision.utils.make_grid(
-                    real[:32], normalize=True
+                    real[:8], normalize=True
                 )
                 img_grid_fake = torchvision.utils.make_grid(
-                    fake[:32], normalize=True
+                    fake[:8], normalize=True
                 )
 
                 writer_real.add_image("Real", img_grid_real, global_step=step)
