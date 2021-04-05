@@ -95,12 +95,11 @@ for epoch in range(NUM_EPOCHS):
 
             with torch.no_grad():
                 fake = gen(fixed_noise)
-                # take out (up to) 2 examples
                 img_grid_real = torchvision.utils.make_grid(
-                    real[:2], normalize=True
+                    real[:32], normalize=True
                 )
                 img_grid_fake = torchvision.utils.make_grid(
-                    fake[:2], normalize=True
+                    fake[:32], normalize=True
                 )
 
                 writer_real.add_image("Real", img_grid_real, global_step=step)
