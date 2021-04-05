@@ -1,2 +1,4 @@
 /venv/
 /logs/
+/model/gen_state_dict.pt
+/generated_images/
