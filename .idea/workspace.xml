@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ca052ce6-fab6-4a80-a84c-76e4724edc62" name="Default Changelist" comment="generate.py">
+    <list default="true" id="ca052ce6-fab6-4a80-a84c-76e4724edc62" name="Default Changelist" comment="hyperparams">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617629760944</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="hyperparams">
+      <created>1617630368373</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1617630368374</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -191,6 +197,7 @@
     <MESSAGE value="fix" />
     <MESSAGE value="some data" />
     <MESSAGE value="generate.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="generate.py" />
+    <MESSAGE value="hyperparams" />
+    <option name="LAST_COMMIT_MESSAGE" value="hyperparams" />
   </component>
 </project>
