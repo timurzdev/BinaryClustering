@@ -2,3 +2,5 @@
 /logs/
 /generated_images/
 /processed_images/
+/__pycache__/
+/.idea/
