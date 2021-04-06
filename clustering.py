@@ -5,7 +5,7 @@ from random import randint
 import sys
 
 
-KERNEL_NOISE_SIZE = 5
+KERNEL_NOISE_SIZE = 3
 noise_mask = np.ones((KERNEL_NOISE_SIZE, KERNEL_NOISE_SIZE), dtype=np.float32)
 noise_mask[KERNEL_NOISE_SIZE//2][KERNEL_NOISE_SIZE//2] = 0
 
