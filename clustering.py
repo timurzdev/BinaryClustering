@@ -30,6 +30,7 @@ def processing(filename):
     save_img.save(rand_name)
     print(f"Image saved as {rand_name}")
 
+
 if __name__ == '__main__':
     args = sys.argv
     if len(args) > 1:
